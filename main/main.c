@@ -64,6 +64,56 @@ void generate_sound(int buzzer_pin, int frequency, int duration_us)
   }
 }
 
+
+
+#define C4  261
+#define D4  294
+#define E4  329
+#define F4  349
+#define G4  391
+#define A4  440
+#define B4  493
+#define C5  523
+#define G3  196
+
+void pontuacao (int n, int buzzer_pin){
+  for (int i = 0; i < n; i++){
+    gpio_put(LED_B, 1);
+    generate_sound(BUZZER, G4, 500000);
+    gpio_put(LED_B, 0);
+
+    sleep_ms(500);
+  }
+}
+
+void play_theme(int buzzer_pin) {
+    // Sequência de notas e durações (exemplo genérico)
+    // Essas notas e durações são apenas para exemplo. Ajuste conforme necessário para a melodia real.
+    generate_sound(buzzer_pin, G4, 500000); // G4 por meio segundo
+    sleep_ms(100); // Pausa entre notas
+    generate_sound(buzzer_pin, E4, 500000); // E4 por meio segundo
+    sleep_ms(100);
+    generate_sound(buzzer_pin, C4, 500000); // C4 por meio segundo
+    sleep_ms(100);
+    generate_sound(buzzer_pin, G4, 500000); // G4 por meio segundo
+    sleep_ms(100);
+    // Repita ou modifique estas linhas conforme necessário para sua melodia
+}
+
+
+void play_loss_music(int buzzer_pin) {
+    // Sequência simplificada da música de perda de vida do Mario
+    generate_sound(buzzer_pin, E4, 150000); // E4 por 150ms
+    sleep_ms(50); // Pausa curta entre notas
+    generate_sound(buzzer_pin, G3, 150000); // G3 por 150ms
+    sleep_ms(50); // Pausa
+    generate_sound(buzzer_pin, E4, 150000); // E4 novamente por 150ms
+    sleep_ms(50); // Pausa
+    generate_sound(buzzer_pin, C4, 300000); // C4 por 300ms, uma nota mais longa no final
+    sleep_ms(500);
+}
+
+
 int main()
 {
   int TAMANHO_SEQ = 0;
@@ -110,10 +160,15 @@ int main()
 
 
   while(!btn_pressed_flag && !btn2_pressed_flag &&!btn3_pressed_flag && !btn4_pressed_flag){
-    sleep_ms(10);
+    sleep_ms(1000);
   }
-  btn_pressed_flag = 0;
 
+  btn_pressed_flag = 0;
+  btn2_pressed_flag = 0;
+  btn3_pressed_flag = 0;
+  btn4_pressed_flag = 0;
+  
+  play_theme(BUZZER);
   srand(to_us_since_boot(get_absolute_time()));
 
   while (true)
@@ -161,7 +216,7 @@ int main()
           printf("RED \n");
         }
       }
-      printf("agora 'e cm vc!");
+      printf("agora e cm vc! \n");
       computador_flag = false;
     }
     int indice_seq_jogado = 0;
@@ -218,7 +273,10 @@ int main()
       {
         printf("ERROU \n");
         printf("erru no indice %d \n", indice_seq_jogado);
+        play_loss_music(BUZZER);
+        pontuacao (TAMANHO_SEQ-1, BUZZER);
         errou_flag = true;
+
       }if(SEQUENCIA[indice_seq_jogado-1] == valor_clicado && indice_seq_jogado==TAMANHO_SEQ){
         computador_flag=true;
         valor_clicado=0;
