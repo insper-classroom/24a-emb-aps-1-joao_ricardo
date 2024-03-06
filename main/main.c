@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
+#include <stdlib.h> // Para rand() e srand()
+#include <time.h>   // Para time()
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
@@ -19,7 +21,6 @@ const int LED_Y = 27;
 const int LED_R = 26;
 const int LED_B = 22;
 
-const int SEQUENCIA[4] = {1, 2, 3, 4};
 
 volatile bool btn_pressed_flag = false;
 volatile bool btn2_pressed_flag = false;
@@ -38,17 +39,14 @@ void btn_callback(uint gpio, uint32_t events)
   if (gpio == BTN2_PIN && !btn2_pressed_flag)
   {
     btn2_pressed_flag = true;
-    gpio_put(LED_R, 1);
   }
   if (gpio == BTN3_PIN && !btn3_pressed_flag)
   {
     btn3_pressed_flag = true;
-    gpio_put(LED_Y, 1);
   }
   if (gpio == BTN4_PIN && !btn4_pressed_flag)
   {
     btn4_pressed_flag = true;
-    gpio_put(LED_G, 1);
   }
 }
 
@@ -69,6 +67,8 @@ void generate_sound(int buzzer_pin, int frequency, int duration_us)
 int main()
 {
   int TAMANHO_SEQ = 0;
+  int SEQUENCIA[100];
+
 
   stdio_init_all();
 
@@ -108,11 +108,21 @@ int main()
   gpio_set_irq_enabled_with_callback(BTN3_PIN, GPIO_IRQ_EDGE_FALL, true, &btn_callback);
   gpio_set_irq_enabled_with_callback(BTN4_PIN, GPIO_IRQ_EDGE_FALL, true, &btn_callback);
 
+
+  while(!btn_pressed_flag && !btn2_pressed_flag &&!btn3_pressed_flag && !btn4_pressed_flag){
+    sleep_ms(10);
+  }
+  btn_pressed_flag = 0;
+
+  srand(to_us_since_boot(get_absolute_time()));
+
   while (true)
   {
 
     if (computador_flag)
     {
+      int novo_numero = rand() % 4 + 1; // Gera um número aleatório entre 1 e 4
+      SEQUENCIA[TAMANHO_SEQ] = novo_numero; // Adiciona o novo número à sequência
       TAMANHO_SEQ++;
       printf(" Tamanho sequencia %d \n", TAMANHO_SEQ);
       for (int i = 0; i < TAMANHO_SEQ; i++)
@@ -131,7 +141,6 @@ int main()
           gpio_put(LED_Y, 1);
           generate_sound(BUZZER, 329.63, 500000);
           sleep_ms(1000);
-
           gpio_put(LED_Y, 0);
           printf("YELLOW \n");
         }
@@ -140,7 +149,6 @@ int main()
           gpio_put(LED_B, 1);
           generate_sound(BUZZER, 261.63, 500000);
           sleep_ms(1000);
-
           gpio_put(LED_B, 0);
           printf("BLUE \n");
         }
@@ -162,40 +170,47 @@ int main()
     {
 
       if (btn_pressed_flag)
-      {
-        gpio_put(LED_B, 1);
-        generate_sound(BUZZER, 261.63, 500000);
+      {gpio_put(LED_B, 1);
+        printf("BLUE \n");
+        generate_sound(BUZZER, 293.66, 500000);
         sleep_ms(1000);
         btn_pressed_flag = 0;
         gpio_put(LED_B, 0);
-        printf("BLUE \n");
         indice_seq_jogado = indice_seq_jogado + 1;
         valor_clicado = 3;
+
       }
       if (btn2_pressed_flag)
       {
-        generate_sound(BUZZER, 293.66, 500000);
+        gpio_put(LED_R, 1);
+        printf("RED \n");
+        generate_sound(BUZZER, 261.63, 500000);
+        sleep_ms(1000);
         btn2_pressed_flag = 0;
         gpio_put(LED_R, 0);
-        printf("RED \n");
         indice_seq_jogado = indice_seq_jogado + 1;
         valor_clicado = 4;
+        
       }
       if (btn3_pressed_flag)
       {
+        gpio_put(LED_Y, 1);
+        printf("YELLOW \n");
         generate_sound(BUZZER, 329.63, 500000);
+        sleep_ms(1000);
         btn3_pressed_flag = 0;
         gpio_put(LED_Y, 0);
-        printf("YELLOW \n");
         indice_seq_jogado = indice_seq_jogado + 1;
         valor_clicado = 2;
       }
       if (btn4_pressed_flag)
       {
+        gpio_put(LED_G, 1);
+        printf("GREEN \n");
         generate_sound(BUZZER, 349.23, 500000);
+        sleep_ms(1000);
         btn4_pressed_flag = 0;
         gpio_put(LED_G, 0);
-        printf("GREEN \n");
         indice_seq_jogado = indice_seq_jogado + 1;
         valor_clicado = 1;
       }
@@ -204,9 +219,10 @@ int main()
         printf("ERROU \n");
         printf("erru no indice %d \n", indice_seq_jogado);
         errou_flag = true;
-      }      
-      if(SEQUENCIA[indice_seq_jogado-1] == valor_clicado && indice_seq_jogado==TAMANHO_SEQ){
+      }if(SEQUENCIA[indice_seq_jogado-1] == valor_clicado && indice_seq_jogado==TAMANHO_SEQ){
         computador_flag=true;
+        valor_clicado=0;
+        sleep_ms(1000);
       }
       else if(SEQUENCIA[indice_seq_jogado-1] == valor_clicado){
         valor_clicado=0;
