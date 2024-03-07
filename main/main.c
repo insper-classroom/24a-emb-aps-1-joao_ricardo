@@ -171,7 +171,7 @@ int main()
       {
         printf("ERROU \n");
         printf("erru no indice %d \n", indice_seq_jogado);
-        play_starwars_theme(BUZZER);
+        play_loss_music(BUZZER);
         pontuacao (TAMANHO_SEQ-1, BUZZER);
         errou_flag = true;
 

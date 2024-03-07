@@ -34,6 +34,7 @@ void pontuacao(int n, int buzzer_pin);
 void play_theme(int buzzer_pin);
 void play_loss_music(int buzzer_pin);
 void play_starwars_theme(int buzzer_pin);
+void play_imperial_march(int buzzer_pin);
 
 // Definição das frequências das notas musicais
 #define C4  261

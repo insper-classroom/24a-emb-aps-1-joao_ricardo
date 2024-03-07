@@ -133,7 +133,7 @@ void play_starwars_theme(int buzzer_pin)
     generate_sound(buzzer_pin, fHS, 125000);
     generate_sound(buzzer_pin, fH, 125000);
     generate_sound(buzzer_pin, fHS, 250000);
-    sleep_ms(250);
+    sleep_ms(120);
 
     generate_sound(buzzer_pin, aS, 250000);
     generate_sound(buzzer_pin, dHS, 500000);
@@ -142,7 +142,7 @@ void play_starwars_theme(int buzzer_pin)
     generate_sound(buzzer_pin, cH, 125000);
     generate_sound(buzzer_pin, b, 125000);
     generate_sound(buzzer_pin, cH, 250000);
-    sleep_ms(250);
+    sleep_ms(120);
 
     // Quarta seção
     generate_sound(buzzer_pin, f, 125000);
@@ -153,7 +153,7 @@ void play_starwars_theme(int buzzer_pin)
     generate_sound(buzzer_pin, a, 375000);
     generate_sound(buzzer_pin, cH, 125000);
     generate_sound(buzzer_pin, eH, 1000000);
-    sleep_ms(500);
+    sleep_ms(250);
 
     generate_sound(buzzer_pin, a, 500000);
     generate_sound(buzzer_pin, a, 500000);
