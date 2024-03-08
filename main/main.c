@@ -11,12 +11,10 @@
 #include "hardware/gpio.h"
 #include "game_functions.h" // Inclui o arquivo de cabeçalho
 
-
 int main()
 {
   int TAMANHO_SEQ = 0;
   int SEQUENCIA[100];
-
 
   stdio_init_all();
 
@@ -56,8 +54,8 @@ int main()
   gpio_set_irq_enabled_with_callback(BTN3_PIN, GPIO_IRQ_EDGE_FALL, true, &btn_callback);
   gpio_set_irq_enabled_with_callback(BTN4_PIN, GPIO_IRQ_EDGE_FALL, true, &btn_callback);
 
-
-  while(!btn_pressed_flag && !btn2_pressed_flag &&!btn3_pressed_flag && !btn4_pressed_flag){
+  while (!btn_pressed_flag && !btn2_pressed_flag && !btn3_pressed_flag && !btn4_pressed_flag)
+  {
     sleep_ms(1000);
   }
 
@@ -65,16 +63,19 @@ int main()
   btn2_pressed_flag = 0;
   btn3_pressed_flag = 0;
   btn4_pressed_flag = 0;
-  
+
   play_starwars_theme(BUZZER);
   srand(to_us_since_boot(get_absolute_time()));
 
   while (true)
   {
+    if(errou_flag){
+      errou_flag=false;
+    }
 
     if (computador_flag)
     {
-      int novo_numero = rand() % 4 + 1; // Gera um número aleatório entre 1 e 4
+      int novo_numero = rand() % 4 + 1;     // Gera um número aleatório entre 1 e 4
       SEQUENCIA[TAMANHO_SEQ] = novo_numero; // Adiciona o novo número à sequência
       TAMANHO_SEQ++;
       printf(" Tamanho sequencia %d \n", TAMANHO_SEQ);
@@ -123,7 +124,8 @@ int main()
     {
 
       if (btn_pressed_flag)
-      {gpio_put(LED_B, 1);
+      {
+        gpio_put(LED_B, 1);
         printf("BLUE \n");
         generate_sound(BUZZER, 293.66, 500000);
         sleep_ms(1000);
@@ -131,7 +133,6 @@ int main()
         gpio_put(LED_B, 0);
         indice_seq_jogado = indice_seq_jogado + 1;
         valor_clicado = 3;
-
       }
       if (btn2_pressed_flag)
       {
@@ -143,7 +144,6 @@ int main()
         gpio_put(LED_R, 0);
         indice_seq_jogado = indice_seq_jogado + 1;
         valor_clicado = 4;
-        
       }
       if (btn3_pressed_flag)
       {
@@ -167,23 +167,45 @@ int main()
         indice_seq_jogado = indice_seq_jogado + 1;
         valor_clicado = 1;
       }
-      if (SEQUENCIA[indice_seq_jogado-1] != valor_clicado && valor_clicado !=0)
+      if (SEQUENCIA[indice_seq_jogado - 1] != valor_clicado && valor_clicado != 0)
       {
         printf("ERROU \n");
         printf("erru no indice %d \n", indice_seq_jogado);
         play_loss_music(BUZZER);
-        pontuacao (TAMANHO_SEQ-1, BUZZER);
+        pontuacao(TAMANHO_SEQ - 1, BUZZER);
         errou_flag = true;
+        if (errou_flag)
+        {
+          while (!btn_pressed_flag && !btn2_pressed_flag && !btn3_pressed_flag && !btn4_pressed_flag)
+          {
+            sleep_ms(1000);
+          }
+          for (int i = 0; i < 100; i++)
+          {
+            SEQUENCIA[i] = 0;
+          }
 
-      }if(SEQUENCIA[indice_seq_jogado-1] == valor_clicado && indice_seq_jogado==TAMANHO_SEQ){
-        computador_flag=true;
-        valor_clicado=0;
+          btn_pressed_flag = 0;
+          btn2_pressed_flag = 0;
+          btn3_pressed_flag = 0;
+          btn4_pressed_flag = 0;
+
+          indice_seq_jogado = 0;
+          TAMANHO_SEQ = 0;
+          valor_clicado=0;
+          computador_flag = true;
+        }
+      }
+      if (SEQUENCIA[indice_seq_jogado - 1] == valor_clicado && indice_seq_jogado == TAMANHO_SEQ)
+      {
+        computador_flag = true;
+        valor_clicado = 0;
         sleep_ms(1000);
       }
-      else if(SEQUENCIA[indice_seq_jogado-1] == valor_clicado){
-        valor_clicado=0;
+      else if (SEQUENCIA[indice_seq_jogado - 1] == valor_clicado)
+      {
+        valor_clicado = 0;
       }
-
     }
   }
 }

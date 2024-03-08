@@ -106,106 +106,106 @@ void play_starwars_theme(int buzzer_pin)
     generate_sound(buzzer_pin, f, 350000);
     generate_sound(buzzer_pin, cH, 150000);
     generate_sound(buzzer_pin, a, 500000);
-    generate_sound(buzzer_pin, f, 350000);
-    generate_sound(buzzer_pin, cH, 150000);
-    generate_sound(buzzer_pin, a, 100000);
-    sleep_ms(500);
+    // generate_sound(buzzer_pin, f, 350000);
+    // generate_sound(buzzer_pin, cH, 150000);
+    // generate_sound(buzzer_pin, a, 100000);
+    // sleep_ms(500);
 
-    // Segunda seção
-    generate_sound(buzzer_pin, eH, 500000);
-    generate_sound(buzzer_pin, eH, 500000);
-    generate_sound(buzzer_pin, eH, 500000);
-    generate_sound(buzzer_pin, fH, 350000);
-    generate_sound(buzzer_pin, cH, 150000);
-    generate_sound(buzzer_pin, gS, 500000);
-    generate_sound(buzzer_pin, f, 350000);
-    generate_sound(buzzer_pin, cH, 150000);
-    generate_sound(buzzer_pin, a, 1000000);
-    sleep_ms(500);
+    // // Segunda seção
+    // generate_sound(buzzer_pin, eH, 500000);
+    // generate_sound(buzzer_pin, eH, 500000);
+    // generate_sound(buzzer_pin, eH, 500000);
+    // generate_sound(buzzer_pin, fH, 350000);
+    // generate_sound(buzzer_pin, cH, 150000);
+    // generate_sound(buzzer_pin, gS, 500000);
+    // generate_sound(buzzer_pin, f, 350000);
+    // generate_sound(buzzer_pin, cH, 150000);
+    // generate_sound(buzzer_pin, a, 1000000);
+    // sleep_ms(500);
 
-    // Terceira seção
-    generate_sound(buzzer_pin, aH, 500000);
-    generate_sound(buzzer_pin, a, 350000);
-    generate_sound(buzzer_pin, a, 150000);
-    generate_sound(buzzer_pin, aH, 500000);
-    generate_sound(buzzer_pin, gHS, 250000);
-    generate_sound(buzzer_pin, gH, 250000);
-    generate_sound(buzzer_pin, fHS, 125000);
-    generate_sound(buzzer_pin, fH, 125000);
-    generate_sound(buzzer_pin, fHS, 250000);
-    sleep_ms(120);
+    // // Terceira seção
+    // generate_sound(buzzer_pin, aH, 500000);
+    // generate_sound(buzzer_pin, a, 350000);
+    // generate_sound(buzzer_pin, a, 150000);
+    // generate_sound(buzzer_pin, aH, 500000);
+    // generate_sound(buzzer_pin, gHS, 250000);
+    // generate_sound(buzzer_pin, gH, 250000);
+    // generate_sound(buzzer_pin, fHS, 125000);
+    // generate_sound(buzzer_pin, fH, 125000);
+    // generate_sound(buzzer_pin, fHS, 250000);
+    // sleep_ms(120);
 
-    generate_sound(buzzer_pin, aS, 250000);
-    generate_sound(buzzer_pin, dHS, 500000);
-    generate_sound(buzzer_pin, dH, 250000);
-    generate_sound(buzzer_pin, cHS, 250000);
-    generate_sound(buzzer_pin, cH, 125000);
-    generate_sound(buzzer_pin, b, 125000);
-    generate_sound(buzzer_pin, cH, 250000);
-    sleep_ms(120);
+    // generate_sound(buzzer_pin, aS, 250000);
+    // generate_sound(buzzer_pin, dHS, 500000);
+    // generate_sound(buzzer_pin, dH, 250000);
+    // generate_sound(buzzer_pin, cHS, 250000);
+    // generate_sound(buzzer_pin, cH, 125000);
+    // generate_sound(buzzer_pin, b, 125000);
+    // generate_sound(buzzer_pin, cH, 250000);
+    // sleep_ms(120);
 
-    // Quarta seção
-    generate_sound(buzzer_pin, f, 125000);
-    generate_sound(buzzer_pin, gS, 500000);
-    generate_sound(buzzer_pin, f, 375000);
-    generate_sound(buzzer_pin, a, 125000);
-    generate_sound(buzzer_pin, cH, 500000);
-    generate_sound(buzzer_pin, a, 375000);
-    generate_sound(buzzer_pin, cH, 125000);
-    generate_sound(buzzer_pin, eH, 1000000);
-    sleep_ms(250);
+    // // Quarta seção
+    // generate_sound(buzzer_pin, f, 125000);
+    // generate_sound(buzzer_pin, gS, 500000);
+    // generate_sound(buzzer_pin, f, 375000);
+    // generate_sound(buzzer_pin, a, 125000);
+    // generate_sound(buzzer_pin, cH, 500000);
+    // generate_sound(buzzer_pin, a, 375000);
+    // generate_sound(buzzer_pin, cH, 125000);
+    // generate_sound(buzzer_pin, eH, 1000000);
+    // sleep_ms(250);
 
-    generate_sound(buzzer_pin, a, 500000);
-    generate_sound(buzzer_pin, a, 500000);
-    generate_sound(buzzer_pin, f, 350000);
-    generate_sound(buzzer_pin, cH, 150000);
-    generate_sound(buzzer_pin, a, 500000);
-    generate_sound(buzzer_pin, f, 350000);
-    generate_sound(buzzer_pin, cH, 150000);
-    generate_sound(buzzer_pin, a, 1000000);
-    sleep_ms(500);
+    // generate_sound(buzzer_pin, a, 500000);
+    // generate_sound(buzzer_pin, a, 500000);
+    // generate_sound(buzzer_pin, f, 350000);
+    // generate_sound(buzzer_pin, cH, 150000);
+    // generate_sound(buzzer_pin, a, 500000);
+    // generate_sound(buzzer_pin, f, 350000);
+    // generate_sound(buzzer_pin, cH, 150000);
+    // generate_sound(buzzer_pin, a, 1000000);
+    // sleep_ms(500);
 
-    // Sexta seção (Variação das seções anteriores)
-    generate_sound(buzzer_pin, eH, 500000);
-    generate_sound(buzzer_pin, eH, 500000);
-    generate_sound(buzzer_pin, eH, 500000);
-    generate_sound(buzzer_pin, fH, 350000);
-    generate_sound(buzzer_pin, cH, 150000);
-    generate_sound(buzzer_pin, gS, 500000);
-    generate_sound(buzzer_pin, f, 350000);
-    generate_sound(buzzer_pin, cH, 150000);
-    generate_sound(buzzer_pin, a, 1000000);
-    sleep_ms(500);
+    // // Sexta seção (Variação das seções anteriores)
+    // generate_sound(buzzer_pin, eH, 500000);
+    // generate_sound(buzzer_pin, eH, 500000);
+    // generate_sound(buzzer_pin, eH, 500000);
+    // generate_sound(buzzer_pin, fH, 350000);
+    // generate_sound(buzzer_pin, cH, 150000);
+    // generate_sound(buzzer_pin, gS, 500000);
+    // generate_sound(buzzer_pin, f, 350000);
+    // generate_sound(buzzer_pin, cH, 150000);
+    // generate_sound(buzzer_pin, a, 1000000);
+    // sleep_ms(500);
 
-    // Repete a terceira seção para concluir
-    generate_sound(buzzer_pin, aH, 500000);
-    generate_sound(buzzer_pin, a, 350000);
-    generate_sound(buzzer_pin, a, 150000);
-    generate_sound(buzzer_pin, aH, 500000);
-    generate_sound(buzzer_pin, gHS, 250000);
-    generate_sound(buzzer_pin, gH, 250000);
-    generate_sound(buzzer_pin, fHS, 125000);
-    generate_sound(buzzer_pin, fH, 125000);
-    generate_sound(buzzer_pin, fHS, 250000);
-    sleep_ms(250);
+    // // Repete a terceira seção para concluir
+    // generate_sound(buzzer_pin, aH, 500000);
+    // generate_sound(buzzer_pin, a, 350000);
+    // generate_sound(buzzer_pin, a, 150000);
+    // generate_sound(buzzer_pin, aH, 500000);
+    // generate_sound(buzzer_pin, gHS, 250000);
+    // generate_sound(buzzer_pin, gH, 250000);
+    // generate_sound(buzzer_pin, fHS, 125000);
+    // generate_sound(buzzer_pin, fH, 125000);
+    // generate_sound(buzzer_pin, fHS, 250000);
+    // sleep_ms(250);
 
-    generate_sound(buzzer_pin, aS, 250000);
-    generate_sound(buzzer_pin, dHS, 500000);
-    generate_sound(buzzer_pin, dH, 250000);
-    generate_sound(buzzer_pin, cHS, 250000);
-    generate_sound(buzzer_pin, cH, 125000);
-    generate_sound(buzzer_pin, b, 125000);
-    generate_sound(buzzer_pin, cH, 250000);
-    sleep_ms(250);
+    // generate_sound(buzzer_pin, aS, 250000);
+    // generate_sound(buzzer_pin, dHS, 500000);
+    // generate_sound(buzzer_pin, dH, 250000);
+    // generate_sound(buzzer_pin, cHS, 250000);
+    // generate_sound(buzzer_pin, cH, 125000);
+    // generate_sound(buzzer_pin, b, 125000);
+    // generate_sound(buzzer_pin, cH, 250000);
+    // sleep_ms(250);
 
-    // Finaliza com uma repetição de partes chave para encerrar a música
-    generate_sound(buzzer_pin, f, 250000);
-    generate_sound(buzzer_pin, gS, 500000);
-    generate_sound(buzzer_pin, f, 375000);
-    generate_sound(buzzer_pin, cH, 125000);
-    generate_sound(buzzer_pin, a, 500000);
-    generate_sound(buzzer_pin, f, 375000);
-    generate_sound(buzzer_pin, c, 125000);
-    generate_sound(buzzer_pin, a, 1000000);
-    sleep_ms(250);
+    // // Finaliza com uma repetição de partes chave para encerrar a música
+    // generate_sound(buzzer_pin, f, 250000);
+    // generate_sound(buzzer_pin, gS, 500000);
+    // generate_sound(buzzer_pin, f, 375000);
+    // generate_sound(buzzer_pin, cH, 125000);
+    // generate_sound(buzzer_pin, a, 500000);
+    // generate_sound(buzzer_pin, f, 375000);
+    // generate_sound(buzzer_pin, c, 125000);
+    // generate_sound(buzzer_pin, a, 1000000);
+    // sleep_ms(250);
 }
