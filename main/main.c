@@ -196,7 +196,7 @@ int main()
           computador_flag = true;
         }
       }
-      if (SEQUENCIA[indice_seq_jogado - 1] == valor_clicado && indice_seq_jogado == TAMANHO_SEQ)
+      if (indice_seq_jogado > 0 && SEQUENCIA[indice_seq_jogado - 1] == valor_clicado && indice_seq_jogado == TAMANHO_SEQ)
       {
         computador_flag = true;
         valor_clicado = 0;
