@@ -202,7 +202,7 @@ int main()
         valor_clicado = 0;
         sleep_ms(1000);
       }
-      else if (SEQUENCIA[indice_seq_jogado - 1] == valor_clicado)
+      if (indice_seq_jogado > 0 && SEQUENCIA[indice_seq_jogado - 1] == valor_clicado)
       {
         valor_clicado = 0;
       }
